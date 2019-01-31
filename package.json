@@ -4,6 +4,7 @@
   "description": "A Twitter like social network made with Next.js",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon server/app.js --watch server",
     "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write"
   },
   "repository": {
