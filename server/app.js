@@ -12,6 +12,9 @@ require('dotenv').config();
 require('./models/user');
 require('./models/post');
 
+// Routes
+const routes = require('./routes');
+
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 const ROOT_URL = dev ? `http://localhost:${port}` : process.env.PROD_URL;
@@ -58,6 +61,9 @@ app.prepare().then(() => {
     const { status = 500, message } = err;
     res.status(status).json(message);
   });
+
+  // Apply routes from the 'routes' folder
+  server.use('/', routes);
 
   // Give all Next.js requests to Next.js server
   server.get('*', (req, res) => {
