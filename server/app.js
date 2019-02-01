@@ -1,12 +1,17 @@
 const express = require('express');
 const next = require('next');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
+const expressValidator = require('express-validator');
 
-// Loads all env variables
-require('dotenv').config();
+// Configuration
+const config = require('./lib/config');
+
+const dev = process.env.NODE_ENV !== 'production';
+const { port, url } = config;
+const ROOT_URL = url;
 
 // Models
 require('./models/user');
@@ -15,28 +20,24 @@ require('./models/post');
 // Routes
 const routes = require('./routes');
 
-const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3000;
-const ROOT_URL = dev ? `http://localhost:${port}` : process.env.PROD_URL;
-
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-};
+// const mongooseOptions = {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false
+// };
 
-mongoose
-  .connect(process.env.MONGO_URI, mongooseOptions)
-  .then(() => console.log('-> DB connected'));
+// mongoose
+//   .connect(db, mongooseOptions)
+//   .then(() => console.log('-> DB connected'));
 
-mongoose.connection.on('error', err => {
-  console.log(`DB connection error: ${err.message}`);
-});
+// mongoose.connection.on('error', err => {
+//   console.log(`DB connection error: ${err.message}`);
+// });
 
-app.prepare().then(() => {
+module.exports = app.prepare().then(() => {
   const server = express();
 
   // ** only for production **
@@ -54,7 +55,11 @@ app.prepare().then(() => {
     })
   );
 
+  // Body parser built-in to Express
   server.use(express.json());
+
+  // This will validate form data sent to the backend
+  server.use(expressValidator());
 
   // Error handling from async / await functions
   server.use((err, req, res, next) => {

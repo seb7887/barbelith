@@ -2,6 +2,7 @@
 A Twitter like social network made with Next.js
 
 ## Dependencies
+* **express-validator**: a set of express.js middlewares thats wraps validator.js validator and sanitizer functions
 * **helmet**: helps secure our app by setting various HTTP headers
 * **compression**: gives us gzip compression
 * **morgan**: http request logger middleware for node.js

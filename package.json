@@ -4,6 +4,7 @@
   "description": "A Twitter like social network made with Next.js",
   "main": "app.js",
   "scripts": {
+    "test:watch": "jest --watch",
     "dev": "nodemon server/app.js --watch server",
     "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write"
   },
@@ -58,6 +59,8 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.0.0",
+    "jest-watch-select-projects": "^0.1.1",
+    "jest-watch-typeahead": "^0.2.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.2"
   }
