@@ -9,6 +9,7 @@ A Twitter like social network made with Next.js
 * **mongoose**: a mongodb object modeling tool designed to work in an asynchronous environment
 * **mongoose-mongodb-errors**: a plugin to transform mongodb like errors into Mongoose ValidationError instances
 * **passport-local-mongoose**: a Mongoose plugin that simplifies building username and password login with Passport
+* **passport**: an authentication middleware for Node.js
 
 ## How to install
 

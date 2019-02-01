@@ -18,5 +18,6 @@ router.post(
   validate.validateSignup,
   catchErrors(authController.signup)
 );
+router.post('/api/auth/signin', authController.signin);
 
 module.exports = router;

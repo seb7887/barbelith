@@ -1,6 +1,6 @@
 const express = require('express');
 const next = require('next');
-// const mongoose = require('mongoose');
+const passport = require('passport');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -20,22 +20,11 @@ require('./models/post');
 // Routes
 const routes = require('./routes');
 
+// Load passport strategy
+require('./handlers/passport');
+
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
-// const mongooseOptions = {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false
-// };
-
-// mongoose
-//   .connect(db, mongooseOptions)
-//   .then(() => console.log('-> DB connected'));
-
-// mongoose.connection.on('error', err => {
-//   console.log(`DB connection error: ${err.message}`);
-// });
 
 module.exports = app.prepare().then(() => {
   const server = express();
@@ -47,6 +36,9 @@ module.exports = app.prepare().then(() => {
     server.use(helmet());
     server.use(compression());
   }
+
+  // add passport middleware to set passport up
+  server.use(passport.initialize());
 
   // morgan for request loggin from client
   server.use(
