@@ -33,6 +33,16 @@ exports.getAuthUser = (req, res) => {
   return res.status(200).json(req.user);
 };
 
+// Profile
+exports.getUserProfile = (req, res) => {
+  if (!req.profile) {
+    return res.status(404).json({
+      message: 'No user found'
+    });
+  }
+  return res.json(req.profile);
+};
+
 // DELETE
 exports.deleteUser = async (req, res) => {
   const { userId } = req.params;
@@ -44,3 +54,4 @@ exports.deleteUser = async (req, res) => {
   const deletedUser = await db.User.findByIdAndDelete({ _id: userId });
   return res.status(200).json(deletedUser);
 };
+

@@ -36,4 +36,6 @@ router
   .get(userController.getAuthUser)
   .delete(checkAuth, catchErrors(userController.deleteUser));
 
+router.get('/api/users/profile/:userId', userController.getUserProfile);
+
 module.exports = router;
