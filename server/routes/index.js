@@ -16,8 +16,10 @@ const { catchErrors } = require('../handlers/error');
 router.post(
   '/api/auth/signup',
   validate.validateSignup,
-  catchErrors(authController.signup)
+  catchErrors(authController.signup),
+  authController.signin
 );
 router.post('/api/auth/signin', authController.signin);
+router.get('/api/auth/signout', authController.signout);
 
 module.exports = router;

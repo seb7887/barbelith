@@ -1,6 +1,9 @@
 const express = require('express');
 const next = require('next');
 const passport = require('passport');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const mongoSessionStore = require('connect-mongo');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -37,8 +40,46 @@ module.exports = app.prepare().then(() => {
     server.use(compression());
   }
 
+  // stores sessions in a mongodb collection
+  const MongoStore = mongoSessionStore(session);
+  // session configuration
+  const sessionConfig = {
+    name: 'barbelith.sid',
+    // secret used for using signed cookies with the session
+    secret: config.secret,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 14 * 24 * 60 * 60 // save session for 14 days
+    }),
+    // forces the session to be saved back to the store
+    resave: false,
+    // don't save unmodified sessions
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 14 // expires in 14 days
+    }
+  };
+
+  if (!dev) {
+    sessionConfig.cookie.secure = true; // serve secure cookies in the production env
+    server.set('trusty proxy', 1); // trust first proxy
+  }
+
+  // sessions allow us to store data on visitors from request to request
+  // this keeps user logged in and allows us to send flash messages
+  server.use(session(sessionConfig));
+
   // add passport middleware to set passport up
   server.use(passport.initialize());
+  server.use(passport.session());
+
+  // custom middleware to put out user data (from passport) on the req.user, so we
+  // can access it as such anywhere in out app
+  server.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+  });
 
   // morgan for request loggin from client
   server.use(
