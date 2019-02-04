@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
+const jimp = require('jimp');
 
 const db = require('../models');
 
@@ -54,6 +56,47 @@ exports.getUserFeed = async (req, res) => {
 };
 
 // UPDATE
+const avatarUploadOptions = {
+  storage: multer.memoryStorage(),
+  limits: {
+    // storing images files up to 1mb
+    fileSize: 1024 * 1024 * 1
+  },
+  fileFilter: (req, file, next) => {
+    if (file.mimetype.startsWith('image/')) {
+      next(null, true);
+    } else {
+      next({ message: `That filetype isn't allowed!` }, false);
+    }
+  }
+};
+
+exports.uploadAvatar = multer(avatarUploadOptions).single('avatar');
+
+exports.resizeAvatar = async (req, res, next) => {
+  if (!req.file) {
+    return next();
+  }
+  const extension = req.file.mimetype.split('/')[1];
+  req.body.avatar = `/static/uploads/avatars/${
+    req.user.name
+    }-${Date.now()}.${extension}`;
+  const image = await jimp.read(req.file.buffer);
+  await image.resize(250, jimp.AUTO);
+  await image.write(`./${req.body.avatar}`);
+  return next();
+};
+
+exports.updateUser = async (req, res) => {
+  req.body.updatedAt = new Date().toISOString();
+  const updatedUser = await db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: req.body },
+    { new: true, runValidators: true }
+  );
+  return res.status(200).json(updatedUser);
+};
+
 exports.addFollowing = async (req, res, next) => {
   const { followId } = req.body;
 

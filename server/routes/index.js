@@ -34,6 +34,12 @@ router.param('userId', userController.getUserById);
 router
   .route('/api/users/:userId')
   .get(userController.getAuthUser)
+  .put(
+    checkAuth,
+    userController.uploadAvatar,
+    catchErrors(userController.resizeAvatar),
+    catchErrors(userController.updateUser)
+  )
   .delete(checkAuth, catchErrors(userController.deleteUser));
 
 router.get('/api/users/profile/:userId', userController.getUserProfile);
