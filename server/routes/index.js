@@ -7,6 +7,7 @@ const userController = require('../controllers/user');
 
 // Middleware
 const validate = require('../middleware/validate');
+const { checkAuth } = require('../middleware/checkAuth');
 
 // Error handler
 const { catchErrors } = require('../handlers/error');
@@ -27,5 +28,11 @@ router.get('/api/auth/signout', authController.signout);
  * USER ROUTES: /api/users
  */
 router.get('/api/users', userController.getUsers);
+
+router.param('userId', userController.getUserById);
+
+router
+  .route('/api/users/:userId')
+  .delete(checkAuth, catchErrors(userController.deleteUser));
 
 module.exports = router;
