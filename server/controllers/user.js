@@ -43,6 +43,51 @@ exports.getUserProfile = (req, res) => {
   return res.json(req.profile);
 };
 
+// UPDATE
+exports.addFollowing = async (req, res, next) => {
+  const { followId } = req.body;
+
+  await db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $push: { following: followId } }
+  );
+  return next();
+};
+
+exports.addFollower = async (req, res) => {
+  const { followId } = req.body;
+
+  const user = await db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $push: { following: followId } },
+    { new: true }
+  );
+
+  return res.status(200).json(user);
+};
+
+exports.deleteFollowing = async (req, res, next) => {
+  const { followId } = req.body;
+
+  await db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $pull: { following: followId } }
+  );
+  return next();
+};
+
+exports.deleteFollower = async (req, res) => {
+  const { followId } = req.body;
+
+  const user = await db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $pull: { following: followId } },
+    { new: true }
+  );
+
+  return res.status(200).json(user);
+};
+
 // DELETE
 exports.deleteUser = async (req, res) => {
   const { userId } = req.params;
@@ -54,4 +99,3 @@ exports.deleteUser = async (req, res) => {
   const deletedUser = await db.User.findByIdAndDelete({ _id: userId });
   return res.status(200).json(deletedUser);
 };
-

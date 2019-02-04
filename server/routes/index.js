@@ -38,4 +38,18 @@ router
 
 router.get('/api/users/profile/:userId', userController.getUserProfile);
 
+router.put(
+  '/api/users/follow',
+  checkAuth,
+  catchErrors(userController.addFollowing),
+  catchErrors(userController.addFollower)
+);
+
+router.put(
+  '/api/users/unfollow',
+  checkAuth,
+  catchErrors(userController.deleteFollowing),
+  catchErrors(userController.deleteFollower)
+);
+
 module.exports = router;
