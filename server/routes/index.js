@@ -94,6 +94,12 @@ router.put(
   catchErrors(postController.toggleComment)
 );
 
+router.delete(
+  '/api/posts/:postId',
+  checkAuth,
+  catchErrors(postController.deletePost)
+);
+
 router.post(
   '/api/posts/new/:userId',
   checkAuth,

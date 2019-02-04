@@ -35,6 +35,7 @@ exports.resizeImage = async (req, res, next) => {
   return next();
 };
 
+// CREATE
 exports.addPost = async (req, res) => {
   const fields = '_id name avatar';
   req.body.postedBy = req.user._id;
@@ -46,6 +47,7 @@ exports.addPost = async (req, res) => {
   return res.status(200).json(post);
 };
 
+// READ
 exports.getPostById = async (req, res, next, id) => {
   const post = await db.Post.findOne({ _id: id });
   req.post = post;
@@ -75,6 +77,7 @@ exports.getPostFeed = async (req, res) => {
   return res.status(200).json(posts);
 };
 
+// UPDATE
 exports.toggleLike = async (req, res) => {
   const { postId } = req.body;
 
@@ -112,4 +115,17 @@ exports.toggleComment = async (req, res) => {
     .populate('postedBy', fields)
     .populate('comments.postedBy', fields);
   res.status(200).json(updatedPost);
+};
+
+// DELETE
+exports.deletePost = async (req, res) => {
+  const { _id } = req.post;
+
+  if (!req.isPoster) {
+    return res.status(400).json({
+      message: 'You are not authorized to perform this action'
+    });
+  }
+  const deletedPost = await db.Post.findByIdAndDelete({ _id });
+  return res.status(200).json(deletedPost);
 };
