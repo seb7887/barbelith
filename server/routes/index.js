@@ -4,6 +4,7 @@ const router = express.Router();
 // Controllers
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
+const postController = require('../controllers/post');
 
 // Middleware
 const validate = require('../middleware/validate');
@@ -62,6 +63,19 @@ router.get(
   '/api/users/feed/:userId',
   checkAuth,
   catchErrors(userController.getUserFeed)
+);
+
+/**
+ * POST ROUTES: /api/posts
+ */
+router.param('postId', postController.getPostById);
+
+router.post(
+  '/api/posts/new/:userId',
+  checkAuth,
+  postController.uploadImage,
+  catchErrors(postController.resizeImage),
+  catchErrors(postController.addPost)
 );
 
 module.exports = router;
