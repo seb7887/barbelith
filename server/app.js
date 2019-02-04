@@ -1,39 +1,35 @@
 const express = require('express');
 const next = require('next');
+const passport = require('passport');
+const session = require('express-session');
 const mongoose = require('mongoose');
+const mongoSessionStore = require('connect-mongo');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
+const expressValidator = require('express-validator');
 
-// Loads all env variables
-require('dotenv').config();
+// Configuration
+const config = require('./lib/config');
+
+const dev = process.env.NODE_ENV !== 'production';
+const { port, url } = config;
+const ROOT_URL = url;
 
 // Models
 require('./models/user');
 require('./models/post');
 
-const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3000;
-const ROOT_URL = dev ? `http://localhost:${port}` : process.env.PROD_URL;
+// Routes
+const routes = require('./routes');
+
+// Load passport strategy
+require('./handlers/passport');
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-};
-
-mongoose
-  .connect(process.env.MONGO_URI, mongooseOptions)
-  .then(() => console.log('-> DB connected'));
-
-mongoose.connection.on('error', err => {
-  console.log(`DB connection error: ${err.message}`);
-});
-
-app.prepare().then(() => {
+module.exports = app.prepare().then(() => {
   const server = express();
 
   // ** only for production **
@@ -44,6 +40,47 @@ app.prepare().then(() => {
     server.use(compression());
   }
 
+  // stores sessions in a mongodb collection
+  const MongoStore = mongoSessionStore(session);
+  // session configuration
+  const sessionConfig = {
+    name: 'barbelith.sid',
+    // secret used for using signed cookies with the session
+    secret: config.secret,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 14 * 24 * 60 * 60 // save session for 14 days
+    }),
+    // forces the session to be saved back to the store
+    resave: false,
+    // don't save unmodified sessions
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 14 // expires in 14 days
+    }
+  };
+
+  if (!dev) {
+    sessionConfig.cookie.secure = true; // serve secure cookies in the production env
+    server.set('trusty proxy', 1); // trust first proxy
+  }
+
+  // sessions allow us to store data on visitors from request to request
+  // this keeps user logged in and allows us to send flash messages
+  server.use(session(sessionConfig));
+
+  // add passport middleware to set passport up
+  server.use(passport.initialize());
+  server.use(passport.session());
+
+  // custom middleware to put out user data (from passport) on the req.user, so we
+  // can access it as such anywhere in out app
+  server.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+  });
+
   // morgan for request loggin from client
   server.use(
     morgan('dev', {
@@ -51,13 +88,20 @@ app.prepare().then(() => {
     })
   );
 
+  // Body parser built-in to Express
   server.use(express.json());
+
+  // This will validate form data sent to the backend
+  server.use(expressValidator());
 
   // Error handling from async / await functions
   server.use((err, req, res, next) => {
     const { status = 500, message } = err;
     res.status(status).json(message);
   });
+
+  // Apply routes from the 'routes' folder
+  server.use('/', routes);
 
   // Give all Next.js requests to Next.js server
   server.get('*', (req, res) => {
