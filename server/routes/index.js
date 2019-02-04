@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Controllers
 const authController = require('../controllers/auth');
+const userController = require('../controllers/user');
 
 // Middleware
 const validate = require('../middleware/validate');
@@ -21,5 +22,10 @@ router.post(
 );
 router.post('/api/auth/signin', authController.signin);
 router.get('/api/auth/signout', authController.signout);
+
+/**
+ * USER ROUTES: /api/users
+ */
+router.get('/api/users', userController.getUsers);
 
 module.exports = router;
