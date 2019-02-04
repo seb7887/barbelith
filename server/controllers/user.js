@@ -43,6 +43,16 @@ exports.getUserProfile = (req, res) => {
   return res.json(req.profile);
 };
 
+// Feed
+exports.getUserFeed = async (req, res) => {
+  const fields = '_id name avatar';
+  const { following, _id } = req.profile;
+
+  following.push(_id);
+  const users = await db.User.find({ _id: { $nin: following } }).select(fields);
+  return res.status(200).json(users);
+};
+
 // UPDATE
 exports.addFollowing = async (req, res, next) => {
   const { followId } = req.body;

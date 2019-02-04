@@ -52,4 +52,10 @@ router.put(
   catchErrors(userController.deleteFollower)
 );
 
+router.get(
+  '/api/users/feed/:userId',
+  checkAuth,
+  catchErrors(userController.getUserFeed)
+);
+
 module.exports = router;
