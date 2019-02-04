@@ -23,6 +23,16 @@ exports.getUserById = async (req, res, next, id) => {
   return next();
 };
 
+exports.getAuthUser = (req, res) => {
+  if (!req.isAuthUser) {
+    res.status(403).json({
+      message: 'You are not authenticated. Please sign in or sign up'
+    });
+    return res.redirect('/signin');
+  }
+  return res.status(200).json(req.user);
+};
+
 // DELETE
 exports.deleteUser = async (req, res) => {
   const { userId } = req.params;

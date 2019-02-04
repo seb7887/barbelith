@@ -33,6 +33,7 @@ router.param('userId', userController.getUserById);
 
 router
   .route('/api/users/:userId')
+  .get(userController.getAuthUser)
   .delete(checkAuth, catchErrors(userController.deleteUser));
 
 module.exports = router;
