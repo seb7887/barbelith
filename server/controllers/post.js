@@ -58,3 +58,19 @@ exports.getPostById = async (req, res, next, id) => {
   return next();
 };
 
+exports.getPostsByUser = async (req, res) => {
+  const posts = await db.Post.find({ postedBy: req.profile._id }).sort({
+    createdAt: 'desc'
+  });
+  return res.status(200).json(posts);
+};
+
+exports.getPostFeed = async (req, res) => {
+  const { following, _id } = req.profile;
+
+  following.push(_id);
+  const posts = await db.Post.find({ postedBy: { $in: following } }).sort({
+    createdAt: 'desc'
+  });
+  return res.status(200).json(posts);
+};
