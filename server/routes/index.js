@@ -70,6 +70,18 @@ router.get(
  */
 router.param('postId', postController.getPostById);
 
+router.put(
+  '/api/posts/like',
+  checkAuth,
+  catchErrors(postController.toggleLike)
+);
+
+router.put(
+  '/api/posts/unlike',
+  checkAuth,
+  catchErrors(postController.toggleLike)
+);
+
 router.post(
   '/api/posts/new/:userId',
   checkAuth,

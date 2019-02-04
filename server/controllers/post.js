@@ -74,3 +74,18 @@ exports.getPostFeed = async (req, res) => {
   });
   return res.status(200).json(posts);
 };
+
+exports.toggleLike = async (req, res) => {
+  const { postId } = req.body;
+
+  const post = await db.Post.findOne({ _id: postId });
+  const likeIds = post.likes.map(id => id.toString());
+  const authUserId = req.user._id.toString();
+  if (likeIds.includes(authUserId)) {
+    await post.likes.pull(authUserId);
+  } else {
+    await post.likes.push(authUserId);
+  }
+  await post.save();
+  return res.status(200).json(post);
+};
