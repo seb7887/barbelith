@@ -82,6 +82,18 @@ router.put(
   catchErrors(postController.toggleLike)
 );
 
+router.put(
+  '/api/posts/comment',
+  checkAuth,
+  catchErrors(postController.toggleComment)
+);
+
+router.put(
+  '/api/posts/uncomment',
+  checkAuth,
+  catchErrors(postController.toggleComment)
+);
+
 router.post(
   '/api/posts/new/:userId',
   checkAuth,

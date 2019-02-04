@@ -89,3 +89,27 @@ exports.toggleLike = async (req, res) => {
   await post.save();
   return res.status(200).json(post);
 };
+
+exports.toggleComment = async (req, res) => {
+  const fields = '_id name avatar';
+  const { comment, postId } = req.body;
+  let operator;
+  let data;
+
+  if (req.url.includes('uncomment')) {
+    operator = '$pull';
+    data = { _id: comment._id };
+  } else {
+    operator = '$push';
+    data = { text: comment.text, postedBy: req.user._id };
+  }
+
+  const updatedPost = await db.Post.findOneAndUpdate(
+    { _id: postId },
+    { [operator]: { comments: data } },
+    { new: true }
+  )
+    .populate('postedBy', fields)
+    .populate('comments.postedBy', fields);
+  res.status(200).json(updatedPost);
+};
