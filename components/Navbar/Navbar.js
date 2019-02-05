@@ -2,7 +2,6 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
 import Lens from '@material-ui/icons/Lens';
 
-
 const Navbar = ({ classes, router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
   return (

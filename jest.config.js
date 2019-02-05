@@ -4,6 +4,7 @@ module.exports = {
     '**/components/**/*.js',
     '**/pages/**/*.js',
     '!**/__tests__/**',
+    '!**/stories/**',
     '!**/node_modules/**'
   ],
   projects: [
