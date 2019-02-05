@@ -4,6 +4,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 const theme = {
   black: 'black',
   white: 'white',
+  coral: '#fc766a',
   type: 'light'
 }
 
@@ -20,11 +21,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ children }) => (
+const Layout = (props) => (
   <ThemeProvider theme={theme}>
     <Page>
       <GlobalStyle />
-      {children}
+      {props.children}
     </Page>
   </ThemeProvider>
 )
