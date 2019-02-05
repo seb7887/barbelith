@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root-13 MuiPaper-elevation4-19 MuiAppBar-root-4 MuiAppBar-positionFixed-5 MuiAppBar-colorPrimary-11 mui-fixed Navbar-appBar-1"
+    data-testid="navbar"
+  >
+    <div
+      class="MuiToolbar-root-40 MuiToolbar-regular-42 MuiToolbar-gutters-41"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root-44 Navbar-icon-3"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+        />
+      </svg>
+      <h1
+        class="MuiTypography-root-53 MuiTypography-h4-68 Navbar-toolbarTitle-2"
+      >
+        Barbelith
+      </h1>
+      <div>
+        <button
+          class="MuiButtonBase-root-115 MuiButton-root-89 MuiButton-text-91 MuiButton-flat-94"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-90"
+          >
+            Sign up
+          </span>
+          <span
+            class="MuiTouchRipple-root-118"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root-115 MuiButton-root-89 MuiButton-text-91 MuiButton-flat-94"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-90"
+          >
+            Sign in
+          </span>
+          <span
+            class="MuiTouchRipple-root-118"
+          />
+        </button>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

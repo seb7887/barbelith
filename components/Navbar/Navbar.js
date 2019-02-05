@@ -1,8 +1,5 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
 import Lens from '@material-ui/icons/Lens';
 
 
@@ -12,6 +9,7 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
     <AppBar
       className={classes.appBar}
       position={router.pathname === '/' ? 'fixed' : 'static'}
+      data-testid='navbar'
     >
       <Toolbar>
         <Lens className={classes.icon} />
@@ -27,13 +25,13 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
           // Auth navigation
           <div>
             <Button>Profile</Button>
-            <Button variant='outlined'>Signout</Button>
+            <Button variant='outlined'>Sign out</Button>
           </div>
         ) : (
             // UnAuth navigation
             <div>
-              <Button>Signup</Button>
-              <Button>Signin</Button>
+              <Button>Sign up</Button>
+              <Button>Sign in</Button>
             </div>
           )}
       </Toolbar>
@@ -51,7 +49,6 @@ const styles = theme => ({
   },
   icon: {
     marginRight: theme.spacing.unit,
-    color: theme.palette.favoriteIcon.light
   }
 });
 
