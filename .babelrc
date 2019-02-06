@@ -4,31 +4,11 @@
       "presets": [
         "next/babel"
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true,
-            "preprocess": false
-          }
-        ]
-      ]
     },
     "production": {
       "presets": [
         "next/babel"
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true,
-            "preprocess": false
-          }
-        ]
-      ]
     },
     "test": {
       "presets": [
@@ -41,16 +21,6 @@
           }
         ]
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true,
-            "preprocess": false
-          }
-        ]
-      ]
     }
   }
 }

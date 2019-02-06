@@ -1,7 +1,9 @@
 import React from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Home from '../components/Home/Home';
 
-const Index = () => (
-  <h1>Hello World</h1>
+const Index = (props) => (
+  <Home {...props} />
 )
 
 export default Index;
