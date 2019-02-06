@@ -18,9 +18,11 @@ import VerifiedUserTwoTone from '@material-ui/icons/VerifiedUserTwoTone';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { DialogActions } from '@material-ui/core';
 
-const Transition = (props) => {
+import { signupUser } from '../../lib/auth';
+
+const Transition = (props) => (
   <Slide direction='up' {...props} />
-}
+)
 
 class Signup extends React.Component {
   state = {
@@ -46,6 +48,16 @@ class Signup extends React.Component {
     const { name, email, password } = this.state;
     const user = { name, email, password };
     this.setState({ isLoading: true, error: '' });
+    signupUser(user)
+      .then(createdUser => {
+        this.setState({
+          createdUser,
+          error: '',
+          openSuccess: true,
+          isLoading: false
+        });
+      })
+      .catch(this.showError);
   }
 
   showError = (err) => {
@@ -125,13 +137,13 @@ class Signup extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              User {createdUser} successfully created!
+              User {createdUser.name} successfully created!
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button color='secondary' variant='contained'>
-              <Link href='/signin'>
-                <a className={classes.signinLink}>Sign in</a>
+              <Link href='/'>
+                <a className={classes.signinLink}>Done</a>
               </Link>
             </Button>
           </DialogActions>
@@ -176,7 +188,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2
   },
   snack: {
-    color: theme.palette.secondary.light
+    color: theme.palette.primary.light
   },
   icon: {
     padding: '0px 2px 2px 0px',
