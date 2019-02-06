@@ -1,20 +1,25 @@
 /* eslint-env jest */
 import { cleanup, render } from 'react-testing-library';
+import Router from 'next/router'
 import Navbar from '../Navbar';
+
+Router.router = {
+  pathname: '/',
+  push: () => { },
+  prefetch: () => { }
+};
 
 afterEach(cleanup);
 
 describe('<Navbar/>', () => {
   let auth = {};
-  let router = {
-    pathname: '/'
-  };
 
   it('renders a minimal nav when signed out', () => {
     const { getByTestId, asFragment } = render(
       <Navbar
-        router={router}
+        context={Router.router}
         pageProps={auth}
+        {...Router}
       />
     );
     expect(getByTestId('navbar').textContent).toContain('Sign up');
@@ -32,8 +37,8 @@ describe('<Navbar/>', () => {
 
     const { getByTestId } = render(
       <Navbar
-        router={router}
         pageProps={auth}
+        {...Router}
       />
     );
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
 import Lens from '@material-ui/icons/Lens';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 const Navbar = ({ classes, router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
+
   return (
     <AppBar
       className={classes.appBar}
@@ -11,7 +13,10 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
       data-testid='navbar'
     >
       <Toolbar>
-        <Lens className={classes.icon} />
+        <ActiveLink href='/'>
+          <Lens className={classes.icon} />
+        </ActiveLink>
+
         <Typography
           variant='h4'
           component='h1'
@@ -23,14 +28,26 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
         {user._id ? (
           // Auth navigation
           <div>
-            <Button>Profile</Button>
+            <Button>
+              <ActiveLink href='/profile'>
+                Profile
+              </ActiveLink>
+            </Button>
             <Button variant='outlined'>Sign out</Button>
           </div>
         ) : (
             // UnAuth navigation
             <div>
-              <Button>Sign up</Button>
-              <Button>Sign in</Button>
+              <Button>
+                <ActiveLink href='/signup'>
+                  Sign up
+                </ActiveLink>
+              </Button>
+              <Button>
+                <ActiveLink href='/signin'>
+                  Sign in
+                </ActiveLink>
+              </Button>
             </div>
           )}
       </Toolbar>
