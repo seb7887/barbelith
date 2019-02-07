@@ -1,7 +1,11 @@
 import React from 'react';
+import { authInitialProps } from '../lib/auth';
 
-const Profile = () => (
+const ProfilePage = () => (
   <h1>Profile Page</h1>
 )
 
-export default Profile;
+// this must be a protected route
+ProfilePage.getInitialProps = authInitialProps(true);
+
+export default ProfilePage;

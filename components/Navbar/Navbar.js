@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, withStyles } from '@material-ui/core';
 import Lens from '@material-ui/icons/Lens';
 import ActiveLink from '../ActiveLink/ActiveLink';
+import { signoutUser } from '../../lib/auth';
 
 const Navbar = ({ classes, router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
@@ -33,7 +34,7 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
                 Profile
               </ActiveLink>
             </Button>
-            <Button variant='outlined'>Sign out</Button>
+            <Button onClick={signoutUser} variant='outlined'>Sign out</Button>
           </div>
         ) : (
             // UnAuth navigation
