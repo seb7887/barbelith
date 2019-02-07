@@ -1,7 +1,17 @@
 /* eslint-env jest */
-import { cleanup, render } from 'react-testing-library';
+import 'react-testing-library/cleanup-after-each';
+import 'jest-dom/extend-expect';
+
+import { render, fireEvent } from 'react-testing-library';
 import Router from 'next/router'
 import Navbar from '../Navbar';
+import { signoutUser as mockSignoutUser } from '../../../lib/auth';
+
+jest.mock('../../../lib/auth', () => {
+  return {
+    signoutUser: jest.fn(() => Promise.resolve())
+  };
+});
 
 Router.router = {
   pathname: '/',
@@ -9,7 +19,9 @@ Router.router = {
   prefetch: () => { }
 };
 
-afterEach(cleanup);
+afterEach(() => {
+  mockSignoutUser.mockClear();
+});
 
 describe('<Navbar/>', () => {
   let auth = {};
@@ -43,5 +55,20 @@ describe('<Navbar/>', () => {
     );
 
     expect(getByTestId('navbar').textContent).toContain('Profile');
+  });
+
+  it('sign out when signed in', async () => {
+    const { getByTestId } = render(
+      <Navbar
+        pageProps={auth}
+        {...Router}
+      />
+    );
+
+    // submit form
+    const signoutButton = getByTestId('signout-button');
+    fireEvent.click(signoutButton);
+
+    expect(mockSignoutUser).toHaveBeenCalledTimes(1);
   });
 });

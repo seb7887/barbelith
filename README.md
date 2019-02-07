@@ -18,6 +18,7 @@ A Twitter like social network made with Next.js
 * **react-jss**: provides components for jss as layer of abstraction
 * **@material-ui/core**: React components that implement Google's Material Design
 * **@material-ui/icons**: svg icons packaged as a set of React components
+* **axios**: promise based HTTP client for the browser and node.js
 ### Test
 * **jest**: a complete ready to set-up js testing solution
 * **react-testing-library**: simple and complete React DOM testing utilities that encourage good testing practices. Made by *Kent C. Dodds*

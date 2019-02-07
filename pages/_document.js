@@ -1,8 +1,11 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+import { getSessionFromServer, getUserScript } from '../lib/auth';
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx) {
+    const user = getSessionFromServer(ctx.req);
+
     // Render app and page and get the context of the page with collected side effects
     let pageContext;
     const page = ctx.renderPage(Component => {
@@ -14,6 +17,7 @@ export default class MyDocument extends Document {
     });
 
     return {
+      ...user,
       ...page,
       pageContext,
       // Styles fragment is rendered after the app and page rendering finish
@@ -33,7 +37,7 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const { pageContext } = this.props;
+    const { pageContext, user = {} } = this.props;
     return (
       <html lang='en' dir='ltr'>
         <Head>
@@ -44,6 +48,7 @@ export default class MyDocument extends Document {
 
         <body>
           <Main />
+          <script dangerouslySetInnerHTML={{ __html: getUserScript(user) }} />
           <NextScript />
         </body>
       </html>

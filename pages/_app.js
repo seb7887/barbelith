@@ -2,6 +2,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
+import NProgress from 'next-nprogress/component';
 import Navbar from '../components/Navbar/Navbar';
 import getPageContext from '../lib/getPageContext';
 
@@ -44,6 +45,12 @@ class MyApp extends App {
             <Component pageContext={this.pageContext} {...pageProps} />
           </MuiThemeProvider>
         </JssProvider>
+        <NProgress
+          color='#fc766a'
+          showAfter={200}
+          options={{ tickleSpeed: 50 }}
+          spinner={false}
+        />
       </Container>
     );
   }

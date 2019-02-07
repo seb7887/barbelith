@@ -1,9 +1,11 @@
 import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
 import Home from '../components/Home/Home';
+import { authInitialProps } from '../lib/auth';
 
 const Index = (props) => (
   <Home {...props} />
 )
+
+Index.getInitialProps = authInitialProps();
 
 export default Index;
