@@ -109,7 +109,19 @@ module.exports = app.prepare().then(() => {
   // Apply routes from the 'routes' folder
   server.use('/', routes);
 
-  // Give all Next.js requests to Next.js server
+  // // Give all Next.js requests to Next.js server
+  server.get("/_next/*", (req, res) => {
+    handle(req, res);
+  });
+
+  server.get('/static/*', (req, res) => {
+    handle(req, res);
+  });
+
+  /* default route
+  - allows Next to handle all other routes
+  - includes the numerous `/_next/...` routes which must    be exposedfor the next app to work correctly
+  - includes 404'ing on unknown routes */
   server.get('*', (req, res) => {
     return handle(req, res);
   });
