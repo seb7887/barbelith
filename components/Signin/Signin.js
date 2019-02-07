@@ -41,7 +41,7 @@ class Signin extends React.Component {
       .catch(this.showError);
   }
 
-  showError = (e) => {
+  showError = (err) => {
     const error = (err.response && err.response.data) || err.message;
     this.setState({ error, openError: true, isLoading: false });
   }
@@ -62,13 +62,14 @@ class Signin extends React.Component {
           <form onSubmit={this.handleSubmit} className={classes.form}>
             <FormControl margin='normal' required fullWidth>
               <InputLabel htmlFor='email'>Email</InputLabel>
-              <Input name='email' type='email' onChange={this.handleChange} />
+              <Input id='email' name='email' type='email' onChange={this.handleChange} />
             </FormControl>
             <FormControl margin='normal' required fullWidth>
               <InputLabel htmlFor='password'>Password</InputLabel>
-              <Input name='password' type='password' onChange={this.handleChange} />
+              <Input id='password' name='password' type='password' onChange={this.handleChange} />
             </FormControl>
             <Button
+              data-testid='submit'
               type='submit'
               fullWidth
               variant='contained'
@@ -83,6 +84,7 @@ class Signin extends React.Component {
           {/* Error Snackbar */}
           {error && (
             <Snackbar
+              data-testid='error'
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right'

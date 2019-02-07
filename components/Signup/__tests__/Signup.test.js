@@ -19,14 +19,6 @@ afterEach(() => {
   mockSignupUser.mockClear();
 });
 
-
-/**
- * TODO:
- * - Snapshot -> OK
- * - Correct submission -> OK
- * - Error submission
- */
-
 describe('<Signup/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Signin/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Signin-root-1"
+  >
+    <div
+      class="MuiPaper-root-7 MuiPaper-elevation2-11 MuiPaper-rounded-8 Signin-paper-2"
+    >
+      <div
+        class="MuiAvatar-root-34 MuiAvatar-colorDefault-35 Signin-avatar-3"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-37"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+          />
+        </svg>
+      </div>
+      <h1
+        class="MuiTypography-root-46 MuiTypography-h5-62"
+      >
+        Sign in
+      </h1>
+      <form
+        class="Signin-form-4"
+      >
+        <div
+          class="MuiFormControl-root-82 MuiFormControl-marginNormal-83 MuiFormControl-fullWidth-85"
+        >
+          <label
+            class="MuiFormLabel-root-97 MuiFormLabel-required-102 MuiInputLabel-required-90 MuiInputLabel-root-86 MuiInputLabel-formControl-91 MuiInputLabel-animated-94"
+            data-shrink="false"
+            for="email"
+          >
+            Email
+            <span
+              class="MuiFormLabel-asterisk-103"
+            >
+               *
+            </span>
+          </label>
+          <div
+            class="MuiInputBase-root-117 MuiInput-root-104 MuiInput-underline-108 MuiInputBase-formControl-118 MuiInput-formControl-105"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input-127 MuiInput-input-112 MuiInputBase-inputType-130 MuiInput-inputType-115"
+              id="email"
+              name="email"
+              required=""
+              type="email"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="MuiFormControl-root-82 MuiFormControl-marginNormal-83 MuiFormControl-fullWidth-85"
+        >
+          <label
+            class="MuiFormLabel-root-97 MuiFormLabel-required-102 MuiInputLabel-required-90 MuiInputLabel-root-86 MuiInputLabel-formControl-91 MuiInputLabel-animated-94"
+            data-shrink="false"
+            for="password"
+          >
+            Password
+            <span
+              class="MuiFormLabel-asterisk-103"
+            >
+               *
+            </span>
+          </label>
+          <div
+            class="MuiInputBase-root-117 MuiInput-root-104 MuiInput-underline-108 MuiInputBase-formControl-118 MuiInput-formControl-105"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input-127 MuiInput-input-112 MuiInputBase-inputType-130 MuiInput-inputType-115"
+              id="password"
+              name="password"
+              required=""
+              type="password"
+              value=""
+            />
+          </div>
+        </div>
+        <button
+          class="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-containedSecondary-147 MuiButton-raised-148 MuiButton-raisedSecondary-150 MuiButton-fullWidth-159 Signin-submit-5"
+          data-testid="submit"
+          tabindex="0"
+          type="submit"
+        >
+          <span
+            class="MuiButton-label-135"
+          >
+            Sign in
+          </span>
+          <span
+            class="MuiTouchRipple-root-163"
+          />
+        </button>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
