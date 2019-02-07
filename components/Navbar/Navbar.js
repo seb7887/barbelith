@@ -34,7 +34,13 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
                 Profile
               </ActiveLink>
             </Button>
-            <Button onClick={signoutUser} variant='outlined'>Sign out</Button>
+            <Button
+              data-testid='signout-button'
+              onClick={signoutUser}
+              variant='outlined'
+            >
+              Sign out
+            </Button>
           </div>
         ) : (
             // UnAuth navigation
