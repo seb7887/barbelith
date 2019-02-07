@@ -76,7 +76,7 @@ class Signup extends React.Component {
     } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div data-testid='signup-form' className={classes.root}>
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
             <Gavel />
@@ -88,17 +88,18 @@ class Signup extends React.Component {
           <form onSubmit={this.handleSubmit} className={classes.form}>
             <FormControl margin='normal' required fullWidth>
               <InputLabel htmlFor='name'>Name</InputLabel>
-              <Input name='name' type='text' onChange={this.handleChange} />
+              <Input id='name' name='name' type='text' onChange={this.handleChange} />
             </FormControl>
             <FormControl margin='normal' required fullWidth>
               <InputLabel htmlFor='email'>Email</InputLabel>
-              <Input name='email' type='email' onChange={this.handleChange} />
+              <Input id='email' name='email' type='email' onChange={this.handleChange} />
             </FormControl>
             <FormControl margin='normal' required fullWidth>
               <InputLabel htmlFor='password'>Password</InputLabel>
-              <Input name='password' type='password' onChange={this.handleChange} />
+              <Input id='password' name='password' type='password' onChange={this.handleChange} />
             </FormControl>
             <Button
+              data-testid='submit'
               type='submit'
               fullWidth
               variant='contained'
