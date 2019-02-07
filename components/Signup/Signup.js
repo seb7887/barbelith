@@ -114,6 +114,7 @@ class Signup extends React.Component {
           {/* Error Snackbar */}
           {error && (
             <Snackbar
+              data-testid='error'
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right'
@@ -128,6 +129,7 @@ class Signup extends React.Component {
 
         {/* Success Dialog */}
         <Dialog
+          data-testid='success'
           open={openSuccess}
           disableBackdropClick={true}
           TransitionComponent={Transition}
