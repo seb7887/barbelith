@@ -100,6 +100,12 @@ module.exports = app.prepare().then(() => {
     res.status(status).json(message);
   });
 
+  // Custom routes with route params
+  server.get('/profile/:userId', (req, res) => {
+    const routeParams = Object.assign({}, req.params, req.query);
+    return app.render(req, res, '/profile', routeParams);
+  });
+
   // Apply routes from the 'routes' folder
   server.use('/', routes);
 
