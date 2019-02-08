@@ -99,7 +99,8 @@ exports.updateUser = async (req, res) => {
 
 exports.addFollowing = async (req, res, next) => {
   const { followId } = req.body;
-  console.log(req.user);
+  console.log(followId);
+  console.log('user', req.user._id);
 
   await db.User.findOneAndUpdate(
     { _id: req.user._id },

@@ -7,7 +7,7 @@ const FollowUser = ({ isFollowing, toggleFollow }) => {
   return (
     <Button
       variant='contained'
-      color={isFollowing ? 'secondary' : 'primary'}
+      color={isFollowing ? 'primary' : 'secondary'}
       onClick={() => toggleFollow(request)}
     >
       {isFollowing ? 'Unfollow' : 'Follow'}
