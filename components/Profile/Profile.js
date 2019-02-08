@@ -14,7 +14,9 @@ import Divider from '@material-ui/core/Divider';
 import Edit from '@material-ui/icons/Edit';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { getUser } from '../../lib/api';
+
 import FollowUser from './FollowUser';
+import DeleteUser from './DeleteUser';
 
 class Profile extends React.Component {
   state = {
@@ -98,7 +100,7 @@ class Profile extends React.Component {
                         </IconButton>
                       </a>
                     </Link>
-                    <p>Delete</p>
+                    <DeleteUser user={user} />
                   </ListItemSecondaryAction>
                 ) : (
                     <FollowUser
