@@ -92,7 +92,7 @@ class Profile extends React.Component {
 
                 {/* Auth - Edit Buttons / UnAuth - Follow Button */}
                 {isAuth ? (
-                  <ListItemSecondaryAction>
+                  <ListItemSecondaryAction data-testid='is-auth'>
                     <Link href='/edit-profile'>
                       <a>
                         <IconButton color='secondary'>
@@ -104,6 +104,7 @@ class Profile extends React.Component {
                   </ListItemSecondaryAction>
                 ) : (
                     <FollowUser
+                      data-testid='no-auth'
                       isFollowing={isFollowing}
                       toggleFollow={this.toggleFollow}
                     />

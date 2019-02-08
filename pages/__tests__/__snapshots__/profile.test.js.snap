@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfilePage /> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root-6 MuiPaper-elevation3-11 MuiPaper-rounded-7 Profile-root-1"
+  >
+    <h1
+      class="MuiTypography-root-33 MuiTypography-h4-48 MuiTypography-gutterBottom-60 MuiTypography-alignCenter-56 Profile-title-2"
+    >
+      Profile
+    </h1>
+    <div
+      class="Profile-progressContainer-4"
+    >
+      <div
+        class="MuiCircularProgress-root-69 MuiCircularProgress-colorPrimary-72 MuiCircularProgress-indeterminate-71 Profile-progress-3"
+        role="progressbar"
+        style="width: 55px; height: 55px;"
+      >
+        <svg
+          class="MuiCircularProgress-svg-74"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle-75 MuiCircularProgress-circleIndeterminate-77"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="19.5"
+            stroke-width="5"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
