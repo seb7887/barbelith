@@ -6,6 +6,7 @@ const FollowUser = ({ isFollowing, toggleFollow }) => {
 
   return (
     <Button
+      data-testid='button'
       variant='contained'
       color={isFollowing ? 'primary' : 'secondary'}
       onClick={() => toggleFollow(request)}
