@@ -1,11 +1,12 @@
 import React from 'react';
 import { authInitialProps } from '../lib/auth';
+import EditProfile from '../components/EditProfile/EditProfile';
 
-const EditProfile = () => (
-  <h1>Edit Profile</h1>
+const EditProfilePage = (props) => (
+  <EditProfile {...props} />
 )
 
 // this must be a protected route
-EditProfile.getInitialProps = authInitialProps(true);
+EditProfilePage.getInitialProps = authInitialProps(true);
 
-export default EditProfile;
+export default EditProfilePage;
