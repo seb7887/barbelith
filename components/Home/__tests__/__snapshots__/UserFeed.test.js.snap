@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserFeed/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="UserFeed-root-1"
+  >
+    <h2
+      class="MuiTypography-root-6 MuiTypography-h6-23 MuiTypography-alignCenter-29"
+      type="title"
+    >
+      Who to Follow
+    </h2>
+    <hr
+      class="MuiDivider-root-42"
+    />
+    <ul
+      class="MuiList-root-47 MuiList-padding-48"
+      data-testid="list"
+    />
+  </div>
+</DocumentFragment>
+`;

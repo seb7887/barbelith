@@ -29,6 +29,6 @@ describe('<Home/>', () => {
       <Home {...auth} />
     );
 
-    expect(getByTestId('home').textContent).toContain('Hello World');
+    expect(getByTestId('home').textContent).toContain('Who to Follow');
   });
 });

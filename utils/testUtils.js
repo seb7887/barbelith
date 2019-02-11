@@ -30,3 +30,18 @@ export const updatedUser = () => ({
   avatar: faker.image.avatar(),
   about: faker.lorem.text()
 });
+
+export const generateUsers = quantity => {
+  const generatedUsers = [];
+
+  for (let i = 0; i < quantity; i++) {
+    const user = {
+      _id: `${i}`,
+      name: `test${i}`,
+      avatar: faker.image.avatar()
+    };
+    generatedUsers.push(user);
+  }
+
+  return generatedUsers;
+};
