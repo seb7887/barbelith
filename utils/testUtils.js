@@ -22,3 +22,11 @@ export const mockedUser = () => ({
   name: 'Test',
   updatedAt: '2019-02-1234'
 });
+
+export const updatedUser = () => ({
+  _id: '7',
+  name: 'kingmob',
+  email: faker.internet.email(),
+  avatar: faker.image.avatar(),
+  about: faker.lorem.text()
+});

@@ -7,7 +7,6 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import Snackbar from "@material-ui/core/Snackbar";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -107,6 +106,7 @@ class EditProfile extends React.Component {
       openError,
       error
     } = this.state;
+
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
@@ -125,11 +125,13 @@ class EditProfile extends React.Component {
               </Avatar>
             ) : (
                 <Avatar
+                  data-testid='big-avatar'
                   src={avatarPreview || avatar}
                   className={classes.bigAvatar}
                 />
               )}
             <input
+              data-testid='avatar'
               type='file'
               name='avatar'
               id='avatar'
@@ -176,6 +178,7 @@ class EditProfile extends React.Component {
               />
             </FormControl>
             <Button
+              data-testid='submit'
               type='submit'
               fullWidth
               disabled={isSaving || isLoading}
@@ -191,6 +194,7 @@ class EditProfile extends React.Component {
         {/* Error Snackbar */}
         {error && (
           <Snackbar
+            data-testid='error'
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'right'
@@ -203,7 +207,7 @@ class EditProfile extends React.Component {
         )}
 
         {/* Success Dialog */}
-        <Dialog open={openSuccess} disableBackdropClick={true}>
+        <Dialog data-testid='success' open={openSuccess} disableBackdropClick={true}>
           <DialogTitle>
             <VerifiedUserTwoTone className={classes.icon} />
             Profile Updated
