@@ -40,6 +40,21 @@ module.exports = app.prepare().then(() => {
     server.use(compression());
   }
 
+  // Body parser built-in to Express
+  server.use(express.json());
+
+  // This will validate form data sent to the backend
+  server.use(expressValidator());
+
+  // // Give all Next.js requests to Next.js server
+  server.get("/_next/*", (req, res) => {
+    handle(req, res);
+  });
+
+  server.get('/static/*', (req, res) => {
+    handle(req, res);
+  });
+
   // stores sessions in a mongodb collection
   const MongoStore = mongoSessionStore(session);
   // session configuration
@@ -88,11 +103,8 @@ module.exports = app.prepare().then(() => {
     })
   );
 
-  // Body parser built-in to Express
-  server.use(express.json());
-
-  // This will validate form data sent to the backend
-  server.use(expressValidator());
+  // Apply routes from the 'routes' folder
+  server.use('/', routes);
 
   // Error handling from async / await functions
   server.use((err, req, res, next) => {
@@ -100,10 +112,16 @@ module.exports = app.prepare().then(() => {
     res.status(status).json(message);
   });
 
-  // Apply routes from the 'routes' folder
-  server.use('/', routes);
+  // Custom routes with route params
+  server.get('/profile/:userId', (req, res) => {
+    const routeParams = Object.assign({}, req.params, req.query);
+    return app.render(req, res, '/profile', routeParams);
+  });
 
-  // Give all Next.js requests to Next.js server
+  /* default route
+  - allows Next to handle all other routes
+  - includes the numerous `/_next/...` routes which must    be exposedfor the next app to work correctly
+  - includes 404'ing on unknown routes */
   server.get('*', (req, res) => {
     return handle(req, res);
   });

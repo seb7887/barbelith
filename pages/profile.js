@@ -1,8 +1,9 @@
 import React from 'react';
+import Profile from '../components/Profile/Profile';
 import { authInitialProps } from '../lib/auth';
 
-const ProfilePage = () => (
-  <h1>Profile Page</h1>
+const ProfilePage = (props) => (
+  <Profile {...props} />
 )
 
 // this must be a protected route
