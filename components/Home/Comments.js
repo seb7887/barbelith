@@ -32,7 +32,7 @@ class Comments extends React.Component {
     const isCommentCreator = comment.postedBy._id === auth.user._id;
 
     return (
-      <div>
+      <div data-testid='comment'>
         <Link href={`/profile/${comment.postedBy._id}`}>
           <a>{comment.postedBy.name}</a>
         </Link>
@@ -42,6 +42,7 @@ class Comments extends React.Component {
           {comment.createdAt}
           {isCommentCreator && (
             <Delete
+              data-testid='delete-comment'
               color='secondary'
               className={classes.commentDelete}
               onClick={() => handleDeleteComment(postId, comment)}
@@ -64,7 +65,7 @@ class Comments extends React.Component {
             <Avatar className={classes.smallAvatar} src={auth.user.avatar} />
           }
           title={
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} data-testid='form'>
               <FormControl margin='normal' required fullWidth>
                 <InputLabel htmlFor='add-comment'>Add comments</InputLabel>
                 <Input

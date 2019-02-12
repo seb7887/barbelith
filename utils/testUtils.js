@@ -46,6 +46,24 @@ export const generateUsers = quantity => {
   return generatedUsers;
 };
 
+export const generateComments = quantity => {
+  const generatedComments = [];
+
+  for (let i = 0; i < quantity; i++) {
+    const comment = {
+      _id: faker.random.uuid().toString(),
+      postedBy: {
+        _id: '7',
+        name: 'test',
+        avatar: faker.image.avatar()
+      },
+      text: faker.lorem.text()
+    };
+    generatedComments.push(comment);
+  }
+  return generatedComments;
+};
+
 export const fakePost = () => ({
   _id: '7',
   postedBy: {
