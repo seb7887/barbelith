@@ -15,6 +15,8 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import withStyles from "@material-ui/core/styles/withStyles";
 
+import Comments from './Comments';
+
 // PureComponent to prevent unnecessary renders
 // (uses shouldComponentUpdate behind the scenes)
 class Post extends React.PureComponent {
@@ -39,6 +41,12 @@ class Post extends React.PureComponent {
         numLikes: this.props.post.likes.length
       });
     }
+
+    if (prevProps.post.comments.length !== this.props.post.comments.length) {
+      this.setState({
+        comments: this.props.post.comments
+      });
+    }
   }
 
   checkLiked = (likes) => likes.includes(this.props.auth.user._id);
@@ -50,7 +58,9 @@ class Post extends React.PureComponent {
       auth,
       isDeletingPost,
       handleDeletePost,
-      handleToggleLike
+      handleToggleLike,
+      handleAddComment,
+      handleDeleteComment
     } = this.props;
     const { isLiked, numLikes, comments } = this.state;
     const isPostCreator = post.postedBy._id === auth.user._id;
@@ -108,14 +118,20 @@ class Post extends React.PureComponent {
           </IconButton>
           <IconButton className={classes.button}>
             <Badge badgeContent={comments.length} color='primary'>
-              <div>Comments</div>
+              <Comment className={classes.commentIcon} />
             </Badge>
           </IconButton>
         </CardActions>
         <Divider />
 
         {/* Comments Area */}
-        <div>comments</div>
+        <Comments
+          auth={auth}
+          postId={post._id}
+          comments={comments}
+          handleAddComment={handleAddComment}
+          handleDeleteComment={handleDeleteComment}
+        />
       </Card>
     );
   }
