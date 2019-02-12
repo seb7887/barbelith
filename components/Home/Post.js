@@ -15,6 +15,8 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import withStyles from "@material-ui/core/styles/withStyles";
 
+// PureComponent to prevent unnecessary renders
+// (uses shouldComponentUpdate behind the scenes)
 class Post extends React.PureComponent {
   state = {
     isLiked: false,
@@ -22,13 +24,33 @@ class Post extends React.PureComponent {
     comments: []
   };
 
+  componentDidMount() {
+    this.setState({
+      isLiked: this.checkLiked(this.props.post.likes),
+      numLikes: this.props.post.likes.length,
+      comments: this.props.post.comments
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.post.likes.length !== this.props.post.likes.length) {
+      this.setState({
+        isLiked: this.checkLiked(this.props.post.likes),
+        numLikes: this.props.post.likes.length
+      });
+    }
+  }
+
+  checkLiked = (likes) => likes.includes(this.props.auth.user._id);
+
   render() {
     const {
       classes,
       post,
       auth,
       isDeletingPost,
-      handleDeletingPost,
+      handleDeletePost,
+      handleToggleLike
     } = this.props;
     const { isLiked, numLikes, comments } = this.state;
     const isPostCreator = post.postedBy._id === auth.user._id;
@@ -37,11 +59,14 @@ class Post extends React.PureComponent {
       <Card className={classes.card}>
         {/* Post Header */}
         <CardHeader
+          data-testid='header'
           avatar={<Avatar src={post.postedBy.avatar} />}
           action={
             isPostCreator && (
               <IconButton
+                data-testid='delete-button'
                 disabled={isDeletingPost}
+                onClick={() => handleDeletePost(post)}
               >
                 <DeleteTwoTone color='secondary' />
               </IconButton>
@@ -55,7 +80,7 @@ class Post extends React.PureComponent {
           subheader={post.createdAt}
           className={classes.cardHeader}
         />
-        <CardContent className={classes.cardContent}>
+        <CardContent className={classes.cardContent} data-testid='content'>
           <Typography variant='body1' className={classes.text}>
             {post.text}
           </Typography>
@@ -69,7 +94,10 @@ class Post extends React.PureComponent {
 
         {/* Post Actions */}
         <CardActions>
-          <IconButton className={classes.button}>
+          <IconButton
+            data-testid='like-button'
+            onClick={() => handleToggleLike(post)}
+            className={classes.button}>
             <Badge badgeContent={numLikes} color='secondary'>
               {isLiked ? (
                 <Favorite className={classes.favoriteIcon} />

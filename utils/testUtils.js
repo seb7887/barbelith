@@ -45,3 +45,17 @@ export const generateUsers = quantity => {
 
   return generatedUsers;
 };
+
+export const fakePost = () => ({
+  _id: '7',
+  postedBy: {
+    _id: '7',
+    name: 'test',
+    avatar: faker.image.avatar()
+  },
+  createdAt: faker.date.recent().toString(),
+  text: faker.lorem.text(),
+  image: faker.image.avatar(),
+  likes: ['7'],
+  comments: []
+});

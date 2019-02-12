@@ -17,7 +17,7 @@ exports[`<NewPost/> renders and matches snapshot 1`] = `
         >
           <img
             class="MuiAvatar-img-41"
-            src="https://s3.amazonaws.com/uifaces/faces/twitter/cyril_gaillard/128.jpg"
+            src="test.jpg"
           />
         </div>
       </div>
@@ -79,7 +79,7 @@ exports[`<NewPost/> renders and matches snapshot 1`] = `
               rows="1"
               tabindex="-1"
             >
-              Consectetur officia fugiat quasi veniam sit soluta.
+              test
             </textarea>
             <textarea
               aria-invalid="false"
@@ -89,7 +89,7 @@ exports[`<NewPost/> renders and matches snapshot 1`] = `
               rows="1"
               style="height: 19px;"
             >
-              Consectetur officia fugiat quasi veniam sit soluta.
+              test
             </textarea>
           </div>
         </div>

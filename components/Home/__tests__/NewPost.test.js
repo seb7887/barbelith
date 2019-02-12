@@ -23,9 +23,9 @@ describe('<NewPost/>', () => {
   it('renders and matches snapshot', () => {
     const { asFragment } = render(
       <NewPost
-        auth={auth}
-        text={text}
-        image={image}
+        auth={{ user: { name: 'test', avatar: 'test.jpg' } }}
+        text={'test'}
+        image={'test.jpg'}
         isAddingPost={false}
         handleChange={handleChange}
         handleAddPost={handleAddPost}
@@ -64,7 +64,7 @@ describe('<NewPost/>', () => {
     );
 
     // fill form
-    fireEvent.change(getByTestId('image'), { target: { files: [ faker.image.avatar()] } });
+    fireEvent.change(getByTestId('image'), { target: { files: [faker.image.avatar()] } });
 
     expect(handleChange).toHaveBeenCalledTimes(1);
 
