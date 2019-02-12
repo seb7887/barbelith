@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewPost/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root-6 MuiPaper-elevation1-9 MuiPaper-rounded-7 MuiCard-root-5 NewPost-card-1"
+    data-testid="card"
+  >
+    <div
+      class="MuiCardHeader-root-33"
+    >
+      <div
+        class="MuiCardHeader-avatar-34"
+      >
+        <div
+          class="MuiAvatar-root-39"
+        >
+          <img
+            class="MuiAvatar-img-41"
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/cyril_gaillard/128.jpg"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCardHeader-content-36"
+      >
+        <h2
+          class="MuiTypography-root-42 MuiTypography-h6-59"
+        >
+          test
+        </h2>
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root-78 NewPost-cardContent-2"
+    >
+      <div
+        class="MuiFormControl-root-79 MuiFormControl-marginNormal-80 MuiFormControl-fullWidth-82"
+        data-testid="textfield"
+        row="2"
+      >
+        <label
+          class="MuiFormLabel-root-94 MuiFormLabel-filled-98 MuiInputLabel-root-83 MuiInputLabel-formControl-88 MuiInputLabel-animated-91 MuiInputLabel-shrink-90 MuiInputLabel-outlined-93"
+          data-shrink="true"
+        >
+          Add a status
+        </label>
+        <div
+          class="MuiInputBase-root-114 MuiOutlinedInput-root-101 MuiInputBase-fullWidth-123 MuiInputBase-formControl-115 MuiInputBase-multiline-122 MuiOutlinedInput-multiline-107"
+        >
+          <fieldset
+            aria-hidden="true"
+            class="MuiPrivateNotchedOutline-root-131 MuiOutlinedInput-notchedOutline-108"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="MuiPrivateNotchedOutline-legend-132"
+              style="width: 0px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+          <div
+            class="MuiPrivateTextarea-root-133"
+          >
+            <textarea
+              aria-hidden="true"
+              class="MuiPrivateTextarea-textarea-134 MuiPrivateTextarea-shadow-135"
+              readonly=""
+              rows="1"
+              tabindex="-1"
+            />
+            <textarea
+              aria-hidden="true"
+              class="MuiPrivateTextarea-textarea-134 MuiPrivateTextarea-shadow-135"
+              readonly=""
+              rows="1"
+              tabindex="-1"
+            >
+              Consectetur officia fugiat quasi veniam sit soluta.
+            </textarea>
+            <textarea
+              aria-invalid="false"
+              class="MuiPrivateTextarea-textarea-134 MuiInputBase-input-124 MuiOutlinedInput-input-109 MuiInputBase-inputMultiline-126 MuiOutlinedInput-inputMultiline-111"
+              name="text"
+              placeholder="What's on your mind, test?"
+              rows="1"
+              style="height: 19px;"
+            >
+              Consectetur officia fugiat quasi veniam sit soluta.
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <input
+        accept="image/*"
+        class="NewPost-input-3"
+        data-testid="image"
+        id="image"
+        name="image"
+        type="file"
+      />
+      <label
+        for="image"
+      >
+        <span
+          class="MuiButtonBase-root-142 MuiIconButton-root-136 MuiIconButton-colorSecondary-139"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="MuiIconButton-label-141"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-145"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <defs>
+                <path
+                  d="M24 24H0V0h24v24z"
+                  id="a"
+                />
+              </defs>
+              <path
+                d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root-183"
+          />
+        </span>
+      </label>
+      <span />
+    </div>
+    <div
+      class="MuiCardActions-root-154 NewPost-cardActions-4"
+    >
+      <button
+        class="MuiButtonBase-root-142 MuiButton-root-157 MuiButton-contained-168 MuiButton-containedSecondary-170 MuiButton-raised-171 MuiButton-raisedSecondary-173 MuiCardActions-action-156"
+        data-testid="submit"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label-158"
+        >
+          Post
+        </span>
+        <span
+          class="MuiTouchRipple-root-183"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

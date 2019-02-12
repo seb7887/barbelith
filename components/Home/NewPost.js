@@ -19,7 +19,7 @@ const NewPost = ({
   handleChange,
   handleAddPost
 }) => (
-    <Card className={classes.card}>
+    <Card className={classes.card} data-testid='card'>
       <CardHeader
         avatar={<Avatar src={auth.user.avatar} />}
         title={
@@ -31,6 +31,7 @@ const NewPost = ({
       />
       <CardContent className={classes.cardContent}>
         <TextField
+          data-testid='textfield'
           label='Add a status'
           value={text}
           name='text'
@@ -46,6 +47,7 @@ const NewPost = ({
           }}
         />
         <input
+          data-testid='image'
           accept='image/*'
           name='image'
           id='image'
@@ -62,6 +64,7 @@ const NewPost = ({
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button
+          data-testid='submit'
           color='secondary'
           variant='contained'
           disabled={!text || isAddingPost}
