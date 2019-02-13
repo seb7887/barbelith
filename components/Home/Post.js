@@ -85,7 +85,7 @@ class Post extends React.PureComponent {
           }
           title={
             <Link href={`/profile/${post.postedBy._id}`} prefetch>
-              <a>{post.postedBy.name}</a>
+              <a className={classes.link}>{post.postedBy.name}</a>
             </Link>
           }
           subheader={format(post.createdAt, 'MM/DD/YYYY - mm:ss')}
@@ -162,6 +162,10 @@ const styles = theme => ({
   },
   commentIcon: {
     color: theme.palette.commentIcon
+  },
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.secondary.main,
   }
 });
 

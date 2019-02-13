@@ -34,7 +34,7 @@ class Comments extends React.Component {
     return (
       <div data-testid='comment'>
         <Link href={`/profile/${comment.postedBy._id}`}>
-          <a>{comment.postedBy.name}</a>
+          <a className={classes.link}>{comment.postedBy.name}</a>
         </Link>
         <br />
         {comment.text}
@@ -120,6 +120,10 @@ const styles = theme => ({
     fontSize: '1.6em',
     verticalAlign: 'middle',
     cursor: 'pointer'
+  },
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.secondary.main,
   }
 });
 

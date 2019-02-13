@@ -49,7 +49,9 @@ const styles = theme => ({
   },
   tileText: {
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 10,
+    textDecoration: 'none',
+    color: theme.palette.secondary.main
   }
 });
 
