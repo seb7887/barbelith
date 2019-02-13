@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import format from 'date-fns/format'
 import Badge from "@material-ui/core/Badge";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -84,10 +85,10 @@ class Post extends React.PureComponent {
           }
           title={
             <Link href={`/profile/${post.postedBy._id}`} prefetch>
-              <a>{post.postedBy.name}</a>
+              <a className={classes.link}>{post.postedBy.name}</a>
             </Link>
           }
-          subheader={post.createdAt}
+          subheader={format(post.createdAt, 'MM/DD/YYYY - mm:ss')}
           className={classes.cardHeader}
         />
         <CardContent className={classes.cardContent} data-testid='content'>
@@ -161,6 +162,10 @@ const styles = theme => ({
   },
   commentIcon: {
     color: theme.palette.commentIcon
+  },
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.secondary.main,
   }
 });
 

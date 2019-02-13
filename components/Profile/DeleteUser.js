@@ -40,7 +40,7 @@ class DeleteUser extends React.Component {
       <div>
         {/* Delete Button */}
         <IconButton
-          data-testid='delete-button'
+          data-testid='delete'
           onClick={this.handleOpen}
           color='secondary'>
           <Delete />

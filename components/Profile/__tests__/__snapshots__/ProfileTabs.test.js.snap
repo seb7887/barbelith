@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileTabs/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorDefault-7"
+    >
+      <div
+        class="MuiTabs-root-37"
+      >
+        <div
+          class="MuiTabs-flexContainer-38"
+        >
+          <div
+            class="MuiTabs-scroller-40 MuiTabs-fixed-41"
+            role="tablist"
+            style="margin-bottom: 0px;"
+          >
+            <div
+              class="MuiTabs-flexContainer-38"
+            >
+              <button
+                aria-selected="true"
+                class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorSecondary-50 MuiTab-selected-51 MuiTab-fullWidth-53"
+                data-testid="tab1"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper-54"
+                >
+                  <span
+                    class="MuiTab-labelContainer-55"
+                  >
+                    <span
+                      class="MuiTab-label-56"
+                    >
+                      Posts
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root-100"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorSecondary-50 MuiTab-fullWidth-53"
+                data-testid="tab2"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper-54"
+                >
+                  <span
+                    class="MuiTab-labelContainer-55"
+                  >
+                    <span
+                      class="MuiTab-label-56"
+                    >
+                      Following
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root-100"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorSecondary-50 MuiTab-fullWidth-53"
+                data-testid="tab3"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper-54"
+                >
+                  <span
+                    class="MuiTab-labelContainer-55"
+                  >
+                    <span
+                      class="MuiTab-label-56"
+                    >
+                      Followers
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root-100"
+                />
+              </button>
+            </div>
+            <span
+              class="MuiPrivateTabIndicator-root-61 MuiPrivateTabIndicator-colorSecondary-63 MuiTabs-indicator-45"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="MuiTypography-root-64 MuiTypography-body1-73"
+      style="padding: 1em;"
+    />
+  </div>
+</DocumentFragment>
+`;
