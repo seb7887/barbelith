@@ -13,6 +13,8 @@ A Twitter like social network made with Next.js
 * **connect-mongo**: stores sessions in the *sessions* collection by default
 * **passport-local-mongoose**: a Mongoose plugin that simplifies building username and password login with Passport
 * **passport**: an authentication middleware for Node.js
+* **jimp**: an image processing library
+* **multer**: a Node.js middleware for handling multipart/form-data (uploading files)
 ### Client
 * **jss**: css in js
 * **react-jss**: provides components for jss as layer of abstraction
@@ -20,6 +22,7 @@ A Twitter like social network made with Next.js
 * **@material-ui/icons**: svg icons packaged as a set of React components
 * **axios**: promise based HTTP client for the browser and node.js
 * **next-nprogress**: a HOC to integrate NProgress (slim progress bar for Ajax's applications) inside the app
+* **date-fns**: toolset for manipulating Javascript dates in a browser & Node.js
 ### Test
 * **jest**: a complete ready to set-up js testing solution
 * **react-testing-library**: simple and complete React DOM testing utilities that encourage good testing practices. Made by *Kent C. Dodds*

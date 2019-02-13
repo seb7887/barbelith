@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import format from 'date-fns/format';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,17 +14,28 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Divider from '@material-ui/core/Divider';
 import Edit from '@material-ui/icons/Edit';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { getUser } from '../../lib/api';
+import {
+  getUser,
+  getPostsByUser,
+  deletePost,
+  likePost,
+  unlikePost,
+  addComment,
+  deleteComment
+} from '../../lib/api';
 
 import FollowUser from './FollowUser';
 import DeleteUser from './DeleteUser';
+import ProfileTabs from './ProfileTabs';
 
 class Profile extends React.Component {
   state = {
     user: null,
+    posts: [],
     isAuth: false,
     isFollowing: false,
-    isLoading: true
+    isLoading: true,
+    isDeletingPost: false,
   };
 
   componentDidMount() {
@@ -31,8 +43,10 @@ class Profile extends React.Component {
     getUser(userId).then(async user => {
       const isAuth = auth.user._id === userId;
       const isFollowing = this.checkFollow(auth, user);
+      const posts = await getPostsByUser(userId);
       this.setState({
         user,
+        posts,
         isAuth,
         isFollowing,
         isLoading: false
@@ -55,13 +69,87 @@ class Profile extends React.Component {
     });
   }
 
+  handleDeletePost = deletedPost => {
+    this.setState({ isDeletingPost: true });
+    deletePost(deletePost._id)
+      .then(postData => {
+        const postIndex = this.state.posts.findIndex(
+          post => post._id === postData._id
+        );
+        const updatedPosts = [
+          ...this.state.posts.slice(0, postIndex),
+          ...this.state.posts.slice(postIndex + 1)
+        ];
+        this.setState({
+          posts: updatedPosts,
+          isDeletingPost: false
+        });
+      })
+      .catch(err => this.setState({ isDeletingPost: false }));
+  }
+
+  handleToggleLike = post => {
+    const { auth } = this.props;
+    const isPostLiked = post.likes.includes(auth.user._id);
+    const sendRequest = isPostLiked ? unlikePost : likePost;
+    sendRequest(post._id)
+      .then(postData => {
+        const postIndex = this.state.posts.findIndex(
+          post => post._id === postData._id
+        );
+        const updatedPosts = [
+          ...this.state.posts.slice(0, postIndex),
+          postData,
+          ...this.state.posts.slice(postIndex + 1)
+        ];
+        this.setState({ posts: updatedPosts });
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleAddComment = (postId, text) => {
+    const comment = { text };
+    addComment(postId, comment)
+      .then(postData => {
+        const postIndex = this.state.posts.findIndex(
+          post => post._id === postData._id
+        );
+        const updatedPosts = [
+          ...this.state.posts.slice(0, postIndex),
+          postData,
+          ...this.state.posts.slice(postIndex + 1)
+        ];
+        this.setState({ posts: updatedPosts })
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleDeleteComment = (postId, comment) => {
+    deleteComment(postId, comment)
+      .then(postData => {
+        const postIndex = this.state.posts.findIndex(
+          post => post._id === postData._id
+        );
+        const updatedPosts = [
+          ...this.state.posts.slice(0, postIndex),
+          postData,
+          ...this.state.posts.slice(postIndex + 1)
+        ];
+        this.setState({ posts: updatedPosts });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     const { classes, auth } = this.props;
     const {
       isLoading,
       isAuth,
       isFollowing,
-      user } = this.state;
+      isDeletingPost,
+      user,
+      posts
+    } = this.state;
     return (
       <Paper className={classes.root} elevation={3}>
         <Typography
@@ -114,9 +202,21 @@ class Profile extends React.Component {
               <ListItem>
                 <ListItemText
                   primary={user.about}
-                  secondary={`Joined: ${user.createdAt}`}
+                  secondary={`Joined: ${format(user.createdAt, 'MM/DD/YYYY')}`}
                 />
               </ListItem>
+
+              {/* Display User's posts, following and followers */}
+              <ProfileTabs
+                auth={auth}
+                posts={posts}
+                user={user}
+                isDeletingPost={isDeletingPost}
+                handleDeletePost={this.handleDeletePost}
+                handleToggleLike={this.handleToggleLike}
+                handleAddComment={this.handleAddComment}
+                handleDeleteComment={this.handleDeleteComment}
+              />
             </List>
           )}
       </Paper>

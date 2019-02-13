@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import format from 'date-fns/format'
 import Badge from "@material-ui/core/Badge";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -87,7 +88,7 @@ class Post extends React.PureComponent {
               <a>{post.postedBy.name}</a>
             </Link>
           }
-          subheader={post.createdAt}
+          subheader={format(post.createdAt, 'MM/DD/YYYY - mm:ss')}
           className={classes.cardHeader}
         />
         <CardContent className={classes.cardContent} data-testid='content'>

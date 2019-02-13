@@ -47,7 +47,7 @@ class MyApp extends App {
         </JssProvider>
         <NProgress
           color='#fc766a'
-          showAfter={200}
+          showAfter={300}
           options={{ tickleSpeed: 50 }}
           spinner={false}
         />
