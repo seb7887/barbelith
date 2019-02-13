@@ -31,14 +31,14 @@ describe('<DeleteUser/>', () => {
     );
 
     // click delete button
-    fireEvent.click(getByTestId('delete-button'));
+    fireEvent.click(getByTestId('delete'));
 
     // wait for dialog
     const dialog = await waitForElement(() => getByTestId('dialog'));
     expect(dialog.textContent).toContain('Delete Account');
 
     fireEvent.click(getByTestId('button-cancel'));
-    expect(getByTestId('delete-button')).toBeTruthy();
+    expect(getByTestId('delete')).toBeTruthy();
   });
 
   it('should delete user if user confirm action', async () => {
@@ -47,7 +47,7 @@ describe('<DeleteUser/>', () => {
     );
 
     // click delete button
-    fireEvent.click(getByTestId('delete-button'));
+    fireEvent.click(getByTestId('delete'));
 
     // wait for dialog
     const dialog = await waitForElement(() => getByTestId('dialog'));
@@ -68,7 +68,7 @@ describe('<DeleteUser/>', () => {
     mockedDeleteUser.mockRejectedValueOnce('Fail!');
 
     // click delete button
-    fireEvent.click(getByTestId('delete-button'));
+    fireEvent.click(getByTestId('delete'));
 
     // wait for dialog
     const dialog = await waitForElement(() => getByTestId('dialog'));

@@ -46,9 +46,9 @@ class ProfileTabs extends React.Component {
             textColor='secondary'
             variant='fullWidth'
           >
-            <Tab label='Posts' />
-            <Tab label='Following' />
-            <Tab label='Followers' />
+            <Tab label='Posts' data-testid='tab1' />
+            <Tab label='Following' data-testid='tab2' />
+            <Tab label='Followers' data-testid='tab3' />
           </Tabs>
         </AppBar>
         {tab === 0 && (

@@ -5,7 +5,7 @@ exports[`<DeleteUser/> renders and matches snapshot 1`] = `
   <div>
     <button
       class="MuiButtonBase-root-7 MuiIconButton-root-1 MuiIconButton-colorSecondary-4"
-      data-testid="delete-button"
+      data-testid="delete"
       tabindex="0"
       type="button"
     >

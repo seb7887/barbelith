@@ -6,7 +6,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const FollowTab = ({ classes, users }) => (
-  <div className={classes.root}>
+  <div className={classes.root} data-testid='follow-tab'>
     <GridList cellHeight={160} className={classes.gridList} cols={4}>
       {users.map(user => (
         <GridListTile style={{ height: 120 }} key={user._id}>
