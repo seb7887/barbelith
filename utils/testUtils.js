@@ -30,3 +30,50 @@ export const updatedUser = () => ({
   avatar: faker.image.avatar(),
   about: faker.lorem.text()
 });
+
+export const generateUsers = quantity => {
+  const generatedUsers = [];
+
+  for (let i = 0; i < quantity; i++) {
+    const user = {
+      _id: `${i}`,
+      name: `test${i}`,
+      avatar: faker.image.avatar()
+    };
+    generatedUsers.push(user);
+  }
+
+  return generatedUsers;
+};
+
+export const generateComments = quantity => {
+  const generatedComments = [];
+
+  for (let i = 0; i < quantity; i++) {
+    const comment = {
+      _id: faker.random.uuid().toString(),
+      postedBy: {
+        _id: '7',
+        name: 'test',
+        avatar: faker.image.avatar()
+      },
+      text: faker.lorem.text()
+    };
+    generatedComments.push(comment);
+  }
+  return generatedComments;
+};
+
+export const fakePost = () => ({
+  _id: '7',
+  postedBy: {
+    _id: '7',
+    name: 'test',
+    avatar: faker.image.avatar()
+  },
+  createdAt: faker.date.recent().toString(),
+  text: faker.lorem.text(),
+  image: faker.image.avatar(),
+  likes: ['7'],
+  comments: []
+});

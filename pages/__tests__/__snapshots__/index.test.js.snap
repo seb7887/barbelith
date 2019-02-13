@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Index/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class="Home-root-1"
+    data-testid="home"
+  >
+    <div
+      class="MuiGrid-container-9 MuiGrid-align-items-xs-center-17 MuiGrid-justify-xs-center-26 Home-heroContent-8"
+    >
+      <h1
+        class="MuiTypography-root-106 MuiTypography-h2-119 MuiTypography-colorTextPrimary-138 MuiTypography-gutterBottom-133 MuiTypography-alignCenter-129"
+      >
+        An Invisible Social Network
+      </h1>
+      <p
+        class="MuiTypography-root-106 MuiTypography-h6-123 MuiTypography-colorTextSecondary-139 MuiTypography-alignCenter-129"
+      >
+        Say you want a revolution?
+      </p>
+      <button
+        class="MuiButtonBase-root-152 MuiFab-root-142 MuiFab-extended-146 MuiFab-primary-144 Home-fabButton-7"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiFab-label-143"
+        >
+          Get Started
+        </span>
+        <span
+          class="MuiTouchRipple-root-155"
+        />
+      </button>
+    </div>
+  </main>
+</DocumentFragment>
+`;

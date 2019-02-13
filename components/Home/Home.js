@@ -1,9 +1,13 @@
 import React from 'react';
 import Router from 'next/router';
+import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+import PostFeed from './PostFeed';
+import UserFeed from './UserFeed';
 
 const Home = ({ classes, auth }) => {
   const { user = {} } = auth || {};
@@ -11,7 +15,23 @@ const Home = ({ classes, auth }) => {
     <main className={classes.root} data-testid='home'>
       {user && user._id ? (
         // Auth User Page
-        <h1>Hello World</h1>
+        <Grid container>
+          <Grid item xs={12} sm={12} md={7}>
+            <PostFeed auth={auth} />
+          </Grid>
+          <Grid item className={classes.drawerContainer}>
+            <Drawer
+              className={classes.drawer}
+              variant='permanent'
+              anchor='right'
+              classes={{
+                paper: classes.drawerPaper
+              }}
+            >
+              <UserFeed auth={auth} />
+            </Drawer>
+          </Grid>
+        </Grid>
       ) : (
           // Splash Page (UnAuth Page)
           <Grid

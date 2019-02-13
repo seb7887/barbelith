@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostFeed/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="PostFeed-root-1"
+  >
+    <h1
+      class="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorSecondary-34 MuiTypography-alignCenter-26 PostFeed-title-2"
+    >
+      Timeline
+    </h1>
+    <div
+      class="MuiPaper-root-44 MuiPaper-elevation1-47 MuiPaper-rounded-45 MuiCard-root-43 NewPost-card-39"
+      data-testid="card"
+    >
+      <div
+        class="MuiCardHeader-root-71"
+      >
+        <div
+          class="MuiCardHeader-avatar-72"
+        >
+          <div
+            class="MuiAvatar-root-77"
+          >
+            <img
+              class="MuiAvatar-img-79"
+              src="test.jpg"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCardHeader-content-74"
+        >
+          <h2
+            class="MuiTypography-root-3 MuiTypography-h6-20"
+          >
+            test
+          </h2>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root-80 NewPost-cardContent-40"
+      >
+        <div
+          class="MuiFormControl-root-81 MuiFormControl-marginNormal-82 MuiFormControl-fullWidth-84"
+          data-testid="textfield"
+          row="2"
+        >
+          <label
+            class="MuiFormLabel-root-96 MuiInputLabel-root-85 MuiInputLabel-formControl-90 MuiInputLabel-animated-93 MuiInputLabel-shrink-92 MuiInputLabel-outlined-95"
+            data-shrink="true"
+          >
+            Add a status
+          </label>
+          <div
+            class="MuiInputBase-root-116 MuiOutlinedInput-root-103 MuiInputBase-fullWidth-125 MuiInputBase-formControl-117 MuiInputBase-multiline-124 MuiOutlinedInput-multiline-109"
+          >
+            <fieldset
+              aria-hidden="true"
+              class="MuiPrivateNotchedOutline-root-133 MuiOutlinedInput-notchedOutline-110"
+              style="padding-left: 8px;"
+            >
+              <legend
+                class="MuiPrivateNotchedOutline-legend-134"
+                style="width: 0px;"
+              >
+                <span>
+                  ​
+                </span>
+              </legend>
+            </fieldset>
+            <div
+              class="MuiPrivateTextarea-root-135"
+            >
+              <textarea
+                aria-hidden="true"
+                class="MuiPrivateTextarea-textarea-136 MuiPrivateTextarea-shadow-137"
+                readonly=""
+                rows="1"
+                tabindex="-1"
+              />
+              <textarea
+                aria-hidden="true"
+                class="MuiPrivateTextarea-textarea-136 MuiPrivateTextarea-shadow-137"
+                readonly=""
+                rows="1"
+                tabindex="-1"
+              />
+              <textarea
+                aria-invalid="false"
+                class="MuiPrivateTextarea-textarea-136 MuiInputBase-input-126 MuiOutlinedInput-input-111 MuiInputBase-inputMultiline-128 MuiOutlinedInput-inputMultiline-113"
+                name="text"
+                placeholder="What's on your mind, test?"
+                rows="1"
+                style="height: 19px;"
+              />
+            </div>
+          </div>
+        </div>
+        <input
+          accept="image/*"
+          class="NewPost-input-41"
+          data-testid="image"
+          id="image"
+          name="image"
+          type="file"
+        />
+        <label
+          for="image"
+        >
+          <span
+            class="MuiButtonBase-root-144 MuiIconButton-root-138 MuiIconButton-colorSecondary-141"
+            role="button"
+            tabindex="0"
+          >
+            <span
+              class="MuiIconButton-label-143"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root-147"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <defs>
+                  <path
+                    d="M24 24H0V0h24v24z"
+                    id="a"
+                  />
+                </defs>
+                <path
+                  d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root-185"
+            />
+          </span>
+        </label>
+        <span />
+      </div>
+      <div
+        class="MuiCardActions-root-156 NewPost-cardActions-42"
+      >
+        <button
+          class="MuiButtonBase-root-144 MuiButtonBase-disabled-145 MuiButton-root-159 MuiButton-contained-170 MuiButton-containedSecondary-172 MuiButton-raised-173 MuiButton-raisedSecondary-175 MuiButton-disabled-179 MuiCardActions-action-158"
+          data-testid="submit"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-160"
+          >
+            Post
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
