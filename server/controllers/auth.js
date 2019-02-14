@@ -8,7 +8,7 @@ exports.signup = async (req, res, next) => {
     if (err) {
       return res.status(500).send(err.message);
     }
-    return next();
+    return res.json(user.name);
   });
 };
 

@@ -32,7 +32,7 @@ describe('<Signup/>', () => {
       <Signup />
     );
 
-    mockSignupUser.mockResolvedValueOnce(me);
+    mockSignupUser.mockResolvedValueOnce(me.name);
 
     // fill form data
     fireEvent.change(getByLabelText(/name/i), { target: { value: me.name } });

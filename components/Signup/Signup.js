@@ -140,7 +140,7 @@ class Signup extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              User {createdUser.name} successfully created!
+              User {createdUser} successfully created! Please sign in
             </DialogContentText>
           </DialogContent>
           <DialogActions>
