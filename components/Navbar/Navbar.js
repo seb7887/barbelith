@@ -45,12 +45,12 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
         ) : (
             // UnAuth navigation
             <div>
-              <Button>
+              <Button data-testid='signup-button'>
                 <ActiveLink href='/signup'>
                   Sign up
                 </ActiveLink>
               </Button>
-              <Button>
+              <Button data-testid='signin-button'>
                 <ActiveLink href='/signin'>
                   Sign in
                 </ActiveLink>

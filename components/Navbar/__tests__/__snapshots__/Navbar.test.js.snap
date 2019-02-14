@@ -41,6 +41,7 @@ exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
       <div>
         <button
           class="MuiButtonBase-root-115 MuiButton-root-89 MuiButton-text-91 MuiButton-flat-94"
+          data-testid="signup-button"
           tabindex="0"
           type="button"
         >
@@ -64,6 +65,7 @@ exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
         </button>
         <button
           class="MuiButtonBase-root-115 MuiButton-root-89 MuiButton-text-91 MuiButton-flat-94"
+          data-testid="signin-button"
           tabindex="0"
           type="button"
         >

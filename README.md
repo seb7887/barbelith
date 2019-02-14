@@ -27,6 +27,9 @@ A Twitter like social network made with Next.js
 * **jest**: a complete ready to set-up js testing solution
 * **react-testing-library**: simple and complete React DOM testing utilities that encourage good testing practices. Made by *Kent C. Dodds*
 * **jest-dom**: custom test matchers to test the state of the DOM
+* **cypress**: end to end testing tool
+* **cypress-testing-library**: React DOM testing utilities for *Cypress*. Made by *Kent C. Dodds*
+* **start-server-and-test**: starts server, waits for URL, then runs test command and, when the tests end, shuts down
 
 ## How to install
 
