@@ -4,6 +4,7 @@
   "description": "A Twitter like social network made with Next.js",
   "main": "app.js",
   "scripts": {
+    "db:clean": "mongo < utils/teardown.js",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

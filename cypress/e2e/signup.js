@@ -1,6 +1,10 @@
 import { generateUser } from '../support/generate';
 
 describe('Signup', () => {
+  beforeEach(() => {
+    cy.exec('npm run db:clean');
+  });
+
   it('should register a new user', () => {
     const user = generateUser();
     cy.visit('/')
@@ -21,13 +25,13 @@ describe('Signup', () => {
   });
 
   it('should display an error if input validation failed', () => {
-    cy.server()
+    cy.server();
     cy.route({
       method: 'POST',
       url: 'http://localhost:8080/signup',
       status: '500',
       response: {}
-    })
+    });
     cy.visit('/signup')
       .getByLabelText(/name/i)
       .type('tt')

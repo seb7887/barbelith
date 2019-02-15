@@ -78,7 +78,7 @@ class UserFeed extends React.Component {
                     </IconButton>
                   </Link>
                   <Button
-                    data-testid='follow'
+                    data-testid={`follow#${i}`}
                     variant='contained'
                     color='secondary'
                     onClick={() => this.handleFollow(user, i)}

@@ -71,7 +71,7 @@ describe('<UserFeed/>', () => {
     const items = container.querySelectorAll('li');
     expect(items).toHaveLength(users.length);
 
-    const followButton = getByTestId('follow');
+    const followButton = getByTestId('follow#0');
     fireEvent.click(followButton);
 
     const snack = await waitForElement(() => getByTestId('snack'));

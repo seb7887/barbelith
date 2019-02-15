@@ -1,7 +1,17 @@
 import faker from 'faker';
 
+const validName = () => {
+  let name = '';
+
+  while (name.length < 4 || name.length > 12) {
+    name = faker.name.firstName();
+  }
+
+  return name;
+}
+
 export const generateUser = () => ({
-  name: faker.name.firstName(),
+  name: validName(),
   email: faker.internet.email(),
   password: '1234'
 });

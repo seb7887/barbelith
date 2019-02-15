@@ -1,0 +1,13 @@
+{
+  "_id": "7",
+  "postedBy": {
+    "_id": "7",
+    "name": "test",
+    "avatar": "test.jpg"
+  },
+  "createdAt": "02-11-2019",
+  "text": "test post",
+  "image": "image.png",
+  "likes": [],
+  "comments": []
+}
