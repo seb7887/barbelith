@@ -42,7 +42,13 @@ export default class MyDocument extends Document {
       <html lang='en' dir='ltr'>
         <Head>
           <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+          <meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no' />
+          <meta name='theme-color' content='#ffffff' />
+          <link rel='shortcut- icon' href='static/icon-512x512.png' type='image/x-icon' />
+          <link rel="icon" sizes="512x512" href="/static/icon-512x512.png" />
+          <link rel="apple-touch-icon" sizes="512x512" href="/static/icon-512x512.png" />
+          <link rel="icon" href="/static/icon-192x192.png" />
+          <link rel="apple-touch-icon" href="/static/icon-192x192.png" />
           <link rel="stylesheet" href="../static/fonts/fonts.css"></link>
         </Head>
 
