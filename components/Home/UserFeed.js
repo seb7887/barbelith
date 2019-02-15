@@ -70,6 +70,7 @@ class UserFeed extends React.Component {
                 <ListItemSecondaryAction className={classes.follow}>
                   <Link href={`/profile/${user._id}`} prefetch>
                     <IconButton
+                      data-testid='user-profile'
                       variant='contained'
                       color='secondary'
                       className={classes.viewButton}
