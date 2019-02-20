@@ -4,12 +4,26 @@
   "description": "A Twitter like social network made with Next.js",
   "main": "app.js",
   "scripts": {
+    "db:clean": "mongo < utils/teardown.js",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
+    "pretest:e2e:run": "npm run build",
+    "test:e2e:run": "start-server-and-test dev http://localhost:8080 cy:run",
+    "test:e2e:dev": "start-server-and-test dev http://localhost:8080 cy:open",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "dev": "nodemon server/app.js --watch server",
-    "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write"
+    "build": "next build",
+    "start": "NODE_ENV=production node server/app.js",
+    "alias": "npx now alias",
+    "deploy": "npx now --public",
+    "remove:deploy": "npx now rm barbelith",
+    "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md)\" --write",
+    "validate": "npm run test:coverage && npm run test:e2e:run",
+    "setup": "npm install && npm run validate"
   },
   "repository": {
     "type": "git",
@@ -57,8 +71,11 @@
     "@storybook/addon-viewport": "^4.1.11",
     "@storybook/react": "^4.1.11",
     "babel-jest": "^24.0.0",
+    "cypress": "^3.1.5",
+    "cypress-testing-library": "^2.3.6",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-cypress": "^0.28.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.0",
@@ -71,6 +88,7 @@
     "jest-watch-typeahead": "^0.2.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.2",
-    "react-testing-library": "^5.4.4"
+    "react-testing-library": "^5.4.4",
+    "start-server-and-test": "^1.7.11"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "version": 1.0,
+  "name": "barbelith",
+  "alias": "barbelith.now.sh",
+  "dotenv": true
+}

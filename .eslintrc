@@ -4,8 +4,12 @@
     "prettier"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "eslint-plugin-cypress"
   ],
+  "env": {
+    "cypress/globals": true
+  },
   "rules": {
     "prettier/prettier": [
       "error"
