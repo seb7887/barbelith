@@ -14,7 +14,7 @@ exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
       >
         <a
           href="/"
-          style="text-decoration: none; margin: 0px; padding: 0px; font-weight: bold; color: rgb(0, 0, 0);"
+          style="text-decoration: none; margin: 0px; padding: 0px; font-weight: bold; color: rgb(0, 0, 0); transition: all 0.3s;"
         >
           <svg
             aria-hidden="true"
@@ -53,7 +53,7 @@ exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
             >
               <a
                 href="/signup"
-                style="text-decoration: none; margin: 0px; padding: 0px; font-weight: normal; color: rgb(0, 0, 0);"
+                style="text-decoration: none; margin: 0px; padding: 0px; font-weight: normal; color: rgb(0, 0, 0); transition: all 0.3s;"
               >
                 Sign up
               </a>
@@ -77,7 +77,7 @@ exports[`<Navbar/> renders a minimal nav when signed out 1`] = `
             >
               <a
                 href="/signin"
-                style="text-decoration: none; margin: 0px; padding: 0px; font-weight: normal; color: rgb(0, 0, 0);"
+                style="text-decoration: none; margin: 0px; padding: 0px; font-weight: normal; color: rgb(0, 0, 0); transition: all 0.3s;"
               >
                 Sign in
               </a>
