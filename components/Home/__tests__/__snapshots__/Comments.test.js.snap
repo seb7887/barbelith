@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comments/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Comments-comments-1"
+  >
+    <div
+      class="MuiCardHeader-root-7 Comments-cardHeader-2"
+    >
+      <div
+        class="MuiCardHeader-avatar-8"
+      >
+        <div
+          class="MuiAvatar-root-13 MuiAvatar-colorDefault-14 Comments-smallAvatar-3"
+        />
+      </div>
+      <div
+        class="MuiCardHeader-content-10"
+      >
+        <span
+          class="MuiTypography-root-16 MuiTypography-body2-24 MuiCardHeader-title-11"
+        >
+          <form
+            data-testid="form"
+          >
+            <div
+              class="MuiFormControl-root-52 MuiFormControl-marginNormal-53 MuiFormControl-fullWidth-55"
+            >
+              <label
+                class="MuiFormLabel-root-67 MuiFormLabel-required-72 MuiInputLabel-required-60 MuiInputLabel-root-56 MuiInputLabel-formControl-61 MuiInputLabel-animated-64"
+                data-shrink="false"
+                for="add-comment"
+              >
+                Add comments
+                <span
+                  class="MuiFormLabel-asterisk-73"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                class="MuiInputBase-root-87 MuiInput-root-74 MuiInput-underline-78 MuiInputBase-formControl-88 MuiInput-formControl-75"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input-97 MuiInput-input-82"
+                  id="add-comment"
+                  name="text"
+                  placeholder="Something to say?"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </form>
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ActiveLink/> renders and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="active-link"
+  >
+    <a
+      href="/"
+      style="text-decoration: none; margin: 0px; padding: 0px; font-weight: normal; color: rgb(0, 0, 0); transition: all 0.3s;"
+    >
+      Barbelith
+    </a>
+  </div>
+</DocumentFragment>
+`;
